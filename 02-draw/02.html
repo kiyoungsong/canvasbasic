@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>Canvas</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
       canvas {
         background: #eee;
@@ -12,31 +12,30 @@
   </head>
 
   <body>
-    <canvas class="canvas" width="600" height="400">이 브라우저는 캔버스를 지원하지 않습니다.</canvas>
+    <canvas class="canvas" width="600" height="400"
+      >이 브라우저는 캔버스를 지원하지 않습니다.</canvas
+    >
 
     <script>
       // beginPath
       // moveTo
       // lineTo
       // closePath
-      const canvas = document.querySelector('.canvas');
-      const context = canvas.getContext('2d');
+      const canvas = document.querySelector(".canvas");
+      const context = canvas.getContext("2d");
 
+      // 선의 시작을 알림(붓을 든다)
       context.beginPath();
+      // 그림 그릴 붓의 위치를 지정해줌
       context.moveTo(100, 100);
+      // 붓을 그음
       context.lineTo(300, 200);
+      // 선을 그음
       context.stroke();
+      // 그림을 그기로 붓을 긋고 붓을 뗀다는 느낌임
       context.closePath();
+      // 색을 채움
       // context.fill();
     </script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-

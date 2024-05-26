@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>Canvas</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
       canvas {
         background: #eee;
@@ -12,32 +12,39 @@
   </head>
 
   <body>
-    <canvas class="canvas" width="600" height="400">이 브라우저는 캔버스를 지원하지 않습니다.</canvas>
+    <canvas class="canvas" width="600" height="400"
+      >이 브라우저는 캔버스를 지원하지 않습니다.</canvas
+    >
 
     <script>
-      function 라디안(각도) {
-        return 각도 * Math.PI / 180;
-      }
+      // 라디안 값 계산
+      const toRadian = (angle) => {
+        return (angle * Math.PI) / 180;
+      };
       // beginPath
       // arc
       // closePath
-      const canvas = document.querySelector('.canvas');
-      const context = canvas.getContext('2d');
+      const canvas = document.querySelector(".canvas");
+      const context = canvas.getContext("2d");
+
+      // 처음위 위치 도형의 중심점을 의미함
+      // x, y, 반지름, 시작각도, 끝각도, 시계반향인지 반시계방향인지?
+      // 각도는 라디안 값을 사용해야함 360도는 2파이 1도는 180분의 파이
       context.beginPath();
-      context.arc(300, 200, 50, 0, 라디안(360), false);
+      context.arc(100, 100, 50, 0, toRadian(360), false);
       context.stroke();
       context.beginPath();
-      context.arc(500, 100, 20, 0, 라디안(360), false);
+      context.arc(500, 100, 20, 0, toRadian(360), false);
+      context.stroke();
+
+      // 피자조각 처럼 그리기
+      context.beginPath();
+      context.arc(100, 250, 50, 0, toRadian(90), false);
+      context.moveTo(100, 250);
+      context.lineTo(150, 250);
+      context.moveTo(100, 250);
+      context.lineTo(100, 300);
       context.stroke();
     </script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-

@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>Canvas</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
       .canvas {
         background: #eee;
@@ -16,35 +16,29 @@
     <canvas class="canvas" width="500" height="300"></canvas>
 
     <script>
-      const canvas = document.querySelector('.canvas');
-      const context = canvas.getContext('2d');
+      const canvas = document.querySelector(".canvas");
+      const context = canvas.getContext("2d");
       let xPos = 10;
       let count = 0;
 
-      function draw() {
-        if (count % 30 === 0) {
+      // draw 함수는 1프레임이라고 생각하면 됨
+      const draw = () => {
+        // 나누기 연산자를 이용한 속도 조절
+        if (count % 2 === 0) {
           context.clearRect(0, 0, canvas.width, canvas.height);
           context.beginPath();
-          context.arc(xPos, 150, 10, 0, Math.PI*2, false);
+          context.arc(xPos, 150, 10, 0, Math.PI * 2);
           context.fill();
-          xPos += 5;
-          // xPos = xPos + 3;
+          xPos += 1;
+          if (xPos > canvas.width) xPos = 10;
         }
 
+        // 드로우가 계속 반복됨
         count++;
         requestAnimationFrame(draw);
-      }
+      };
 
       draw();
     </script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-

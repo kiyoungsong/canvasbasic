@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>Canvas</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
       .canvas {
         background: #eee;
@@ -16,34 +16,22 @@
     <canvas class="canvas" width="500" height="300"></canvas>
 
     <script>
-      const canvas = document.querySelector('.canvas');
-      const context = canvas.getContext('2d');
+      const canvas = document.querySelector(".canvas");
+      const context = canvas.getContext("2d");
       let xPos = 10;
-      let timerId;
 
-      function draw() {
+      // draw 함수는 1프레임이라고 생각하면 됨
+      const draw = () => {
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.beginPath();
-        context.arc(xPos, 150, 10, 0, Math.PI*2, false);
+        context.arc(xPos, 150, 10, 0, Math.PI * 2);
         context.fill();
-        xPos += 10;
-        // xPos = xPos + 3;
-      }
+        xPos += 1;
+        if (xPos > canvas.width) xPos = 10;
+      };
 
-      timerId = setInterval(draw, 500);
-
-      canvas.addEventListener('click', () => {
-        clearInterval(timerId);
-      });
+      // 드로우가 계속 반복됨
+      setInterval(draw, 10);
     </script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
