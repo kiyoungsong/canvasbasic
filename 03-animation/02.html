@@ -19,6 +19,7 @@
       const canvas = document.querySelector(".canvas");
       const context = canvas.getContext("2d");
       let xPos = 10;
+      let timerId;
 
       // draw 함수는 1프레임이라고 생각하면 됨
       const draw = () => {
@@ -31,7 +32,10 @@
       };
 
       // 드로우가 계속 반복됨
-      setInterval(draw, 10);
+      timerId = setInterval(draw, 10);
+      canvas.addEventListener("click", () => {
+        clearInterval(timerId);
+      });
     </script>
   </body>
 </html>
