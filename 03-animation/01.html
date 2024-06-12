@@ -19,20 +19,34 @@
       const canvas = document.querySelector(".canvas");
       const context = canvas.getContext("2d");
       let xPos = 10;
+      let timerId;
 
       // draw 함수는 1프레임이라고 생각하면 됨
       const draw = () => {
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.beginPath();
-        context.arc(xPos, 150, 10, 0, Math.PI * 2);
+        context.arc(xPos, 150, 10, 0, Math.PI * 2, false);
         context.fill();
         xPos += 1;
+
+        // 애니메이션 반복 재시작
         if (xPos > canvas.width) xPos = 10;
+
+        // 애니메이션 멈추는 방법
+        // if (xPos >= canvas.width - 10) {
+        //   return;
+        // }
+
         // 드로우가 계속 반복됨
-        requestAnimationFrame(draw);
+        timerId = requestAnimationFrame(draw);
       };
 
       draw();
+
+      // 클릭하여 애니메이션 멈추기
+      canvas.addEventListener("click", () => {
+        cancelAnimationFrame(timerId);
+      });
     </script>
   </body>
 </html>
